@@ -2,27 +2,29 @@ import requests
 import os
 from utils import zip_images
 
-def send_request(glb_file_path):
-    print("Sending request to HuggingFace endpoint")
-    url = "https://tur-learning-dust3r-fastapi.hf.space/upload_zip/"
-    output_file_path = "./model.glb"
+def duster(image_type, config2):
 
-    # Load the file
-    files = {'file': open(glb_file_path, 'rb')}
+    def send_request(glb_file_path):
+        print("Sending request to HuggingFace endpoint")
+        url = "https://tur-learning-dust3r-fastapi.hf.space/upload_zip/"
+        output_file_path = "./model.glb"
 
-    # Send the POST request
-    response = requests.post(url, files=files)
+        # Load the file
+        files = {'file': open(glb_file_path, 'rb')}
 
-    # Save the response to the output file
-    if response.status_code == 200:
-        with open(output_file_path, 'wb') as f:
-            f.write(response.content)
-        print("File saved!")
-    else:
-        print(f"Error during file loading: {response.status_code}")
+        # Send the POST request
+        response = requests.post(url, files=files)
+
+        # Save the response to the output file
+        if response.status_code == 200:
+            with open(output_file_path, 'wb') as f:
+                f.write(response.content)
+            print("File saved!")
+        else:
+            print(f"Error during file loading: {response.status_code}")
 
 
-if __name__ == "__main__":
-    image_dir = "preprocessed"
-    zip_images(image_dir, "photos.zip")
-    send_request("photos.zip")
+    if __name__ == "__main__":
+        image_dir = image_type # YOU WANT THIS TO BE A CHOICE, NOT HARDCODED. MAKE AN INPUT. OTHERWISE, MAKE DOWNLOADED IMPAGES
+        zip_images(image_dir, "photos.zip")
+        send_request("photos.zip")
