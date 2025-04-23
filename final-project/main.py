@@ -15,12 +15,12 @@ with open("config.json") as f:
 
 # 3
 # implement logic to use different models based on the configured parameters
-# delete current images (if they exist) and download ones from file_ids
+# delete current images (if they exist) and download new ones from file_ids
 if config["down_files"]:
     down_images(fileids=config["file_ids"])
     print("We have downloaded our new files")
 
-# First: preprocess
+# First: preprocess and store in preprocess folder
 if config["preprocess_image"]:
     preprocess(input=config["image_directory"],
                model=config["model_name"],
@@ -28,12 +28,12 @@ if config["preprocess_image"]:
     print("We are going to preprocess the image to remove the background")
     print(f"This preprocessing is using model" + config["model_name"])
 
-# Run the duster file
+# Run the duster file, save output
 if config["use_dust3r"]:
     duster(input=config["output_directory"])
     print("We are going to use dust3r APIs")
 
-# Run the master file
+# Run the master file, output as the better output for the 3D image (in separate window)
 if config["use_mast3r"]:
     print("We are going to use mast3r APIs")
     print("The following output is our final model")

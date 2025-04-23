@@ -24,6 +24,6 @@ CHANGES YOU CAN MAKE TO THE CODE:
 turn off different functions from running by changing true and false commands. consider using duster, master, and down_files.
 change the directory if you wanted to use different photo inputs -- this would require creating a new folder to store these images in.
 change model names using https://huggingface.co/spaces/KenjieDec/RemBG. this change is printed in the terminal.
-change the file IDs in the config file, make sure the down_files is true so that any previously downloaded files are deleted.
+change the file IDs in the config file, make sure the down_files is true so that any previously downloaded files are deleted. collect these file IDs from the links of the google drive that is linked in the script.
 
 Enjoy your time exploring the code!!
