@@ -4,38 +4,37 @@ from pathlib import Path
 from utils import convert_png_to_jpg
 
 
-def preprocess(root_directory):
+def preprocess(input, output, model): # MAKE THER ROOT DIRECTORY AN INPUT FROM CONFIG, model type has a default but can be changed
 
     # This variable can be put in the config file
-    root = root_directory
-    images_path = os.listdir(root)
+    images_path = os.listdir(input) # changable with input
 
     # Visit this page to view the possible models that can be used:
     # https://huggingface.co/spaces/KenjieDec/RemBG
     client = Client("KenjieDec/RemBG")
 
-    preprocessed_dir = Path("preprocessed").resolve()
+    preprocessed_dir = Path(output).resolve() # MAKE PREPROCESSED THE OUTPUT
     # Initially removes dir
     shutil.rmtree(preprocessed_dir)
     Path.mkdir(preprocessed_dir)
 
     for image in images_path:
         result = client.predict(
-                file=handle_file(os.path.join(root, image)),
+                file=handle_file(os.path.join(input, image)),
                 mask="Default",
-                model="u2netp", # You can change the model if you wish, or add it as a config parameter
+                model= model, # this is user changable
                 x=3,
                 y=3,
                 api_name="/inference"
         )
         result = Path(result)
         print(result)
-        print("Copying preprocessed image to 'preprocessed' directory")
+        print("Copying preprocessed image to output directory")
         shutil.copyfile(result, os.path.join("preprocessed", result.parent.name+result.suffix))
 
     # Images are converted to jpg for integration with dust3r model
     convert_png_to_jpg(preprocessed_dir)
-    return preprocessed_dir # potentially this is a place for the user to specify 
+    return preprocessed_dir 
 
     # removes background and puts in folder
     # made from png to jpeg

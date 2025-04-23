@@ -1,14 +1,18 @@
 {
-    "download": false,
-    "image_directory": "path/to/image/dir",
+    "download": false, 
+    "image_directory": "downloads",
+    "output_directory": "preprocessed",
     "use_dust3r": true,
     "use_mast3r": true,
     "preprocess_image": true,
+    "model_name": "u2net",
     "view_output": true,
-    "file:ids": ["17QxZpfjLsL5BElf0OYNwBU0hq4wr1MG_",
+    "down_files": false,
+    "file_ids": ["17QxZpfjLsL5BElf0OYNwBU0hq4wr1MG_",
                  "19vAoGLwLDXrr620WHmpkNXiNwZXCVcnt",
                  "1LANtLNxl5UzKY1j7gofH-kdugJeEtkLX",
                 "1DEQyClx4Be_hQtq1f3xtc2X9Smz8R686",
                  "1nIhExOE8asL0-7SSHx87BUij5TPxXfwj"
     ]
 }
+

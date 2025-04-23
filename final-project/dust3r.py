@@ -2,7 +2,7 @@ import requests
 import os
 from utils import zip_images
 
-def duster(image_type, config2):
+def duster(input):
 
     def send_request(glb_file_path):
         print("Sending request to HuggingFace endpoint")
@@ -25,6 +25,6 @@ def duster(image_type, config2):
 
 
     if __name__ == "__main__":
-        image_dir = image_type # YOU WANT THIS TO BE A CHOICE, NOT HARDCODED. MAKE AN INPUT. OTHERWISE, MAKE DOWNLOADED IMPAGES
+        image_dir = input 
         zip_images(image_dir, "photos.zip")
         send_request("photos.zip")
