@@ -36,10 +36,10 @@ local_paths = [download_google_drive_file(fid) for fid in file_ids]
 filelist = [handle_file(path) for path in local_paths]
 
 # Step 3: Use gradio_client to call the endpoint
-HF_TOKEN = "*****"
+HFT = "*****"
 
 # Initialize the client with the Space name
-client = Client("tur-learning/MASt3R", hf_token=f"{HF_TOKEN}")
+client = Client("tur-learning/MASt3R", hf_token=f"{HFT}")
 
 # Make the API call
 result = client.predict(

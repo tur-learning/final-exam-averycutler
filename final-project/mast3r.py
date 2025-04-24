@@ -18,13 +18,13 @@ def master(input):
     print(filelist)
 
     # Step 3: Use gradio_client to call the endpoint
-    HF_TOKEN = "******"
+    HFT = "********"
 
-    if HF_TOKEN is None:
+    if HFT is None:
         raise ValueError("ERROR: YOU MUST INPUT YOUR HUGGINGFACE TOKEN")
 
     # Initialize the client with the Space name
-    client = Client("tur-learning/MASt3R", hf_token=f"{HF_TOKEN}") # fixed endpoint
+    client = Client("tur-learning/MASt3R", hf_token=f"{HFT}") # fixed endpoint
 
 
     # Make the API call
