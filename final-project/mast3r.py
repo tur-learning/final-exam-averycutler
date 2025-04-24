@@ -18,7 +18,7 @@ def master(input):
     print(filelist)
 
     # Step 3: Use gradio_client to call the endpoint
-    HF_TOKEN = "********"
+    HF_TOKEN = "******"
 
     if HF_TOKEN is None:
         raise ValueError("ERROR: YOU MUST INPUT YOUR HUGGINGFACE TOKEN")
